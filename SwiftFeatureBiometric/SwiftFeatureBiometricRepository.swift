@@ -10,10 +10,11 @@ import LocalAuthentication
 public protocol SwiftFeatureBiometricRepository {
     func supportedBiometric() -> LABiometryType
     func isDeviceSupportBiometric() -> Bool
-    func canAuthenticate() -> Bool
+    func canAuthenticate(policy: LAPolicy) -> Bool
     func isBiometricChanged(key: String) -> Bool
     func authenticate(
         key: String,
+        policy: LAPolicy,
         localizedReason: String,
         completion: @escaping (
             FeatureBiometricAuthenticationStatus

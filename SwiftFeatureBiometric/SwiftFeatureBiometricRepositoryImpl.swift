@@ -29,11 +29,11 @@ public class SwiftFeatureBiometricRepositoryImpl:
         return supportedBiometric
     }
 
-    public func canAuthenticate() -> Bool {
+    public func canAuthenticate(policy: LAPolicy) -> Bool {
         return LAContext().canEvaluatePolicy(
-                .deviceOwnerAuthenticationWithBiometrics,
-                error: nil
-            )
+            policy,
+            error: nil
+        )
     }
 
     public func isBiometricChanged(key: String) -> Bool {
@@ -44,19 +44,23 @@ public class SwiftFeatureBiometricRepositoryImpl:
     }
 
     public func authenticate(
-        key: String, localizedReason: String,
+        key: String,
+        policy: LAPolicy,
+        localizedReason: String,
         completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void
     ) {
         let context = LAContext()
         let defaults = UserDefaults.standard
         context.evaluatePolicy(
-            .deviceOwnerAuthenticationWithBiometrics,
+            policy,
             localizedReason: localizedReason
         ) { success, error in
             if success {
                 let domainState = context.evaluatedPolicyDomainState
                 defaults.set(domainState, forKey: key)
-                completion(.success(encodedDomainState: domainState?.base64EncodedString()))
+                completion(
+                    .success(
+                        encodedDomainState: domainState?.base64EncodedString()))
             } else {
                 completion(.canceled)
             }
