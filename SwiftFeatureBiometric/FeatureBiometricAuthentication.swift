@@ -6,6 +6,6 @@
 //
 
 public enum FeatureBiometricAuthenticationStatus {
-    case success
+    case success(encodedDomainState: String?)
     case canceled
 }

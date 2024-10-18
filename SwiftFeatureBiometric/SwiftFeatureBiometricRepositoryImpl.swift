@@ -12,8 +12,8 @@ public class SwiftFeatureBiometricRepositoryImpl:
 {
 
     public init() {}
-    let laContext: LAContext = LAContext()
 
+    let laContext: LAContext = LAContext()
     public func supportedBiometric() -> LABiometryType {
         return laContext.biometryType
     }
@@ -30,9 +30,7 @@ public class SwiftFeatureBiometricRepositoryImpl:
     }
 
     public func canAuthenticate() -> Bool {
-        return
-            laContext
-            .canEvaluatePolicy(
+        return LAContext().canEvaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 error: nil
             )
@@ -41,7 +39,7 @@ public class SwiftFeatureBiometricRepositoryImpl:
     public func isBiometricChanged(key: String) -> Bool {
         let defaults = UserDefaults.standard
         let oldDomainState = defaults.object(forKey: key) as? Data
-        let domainState = laContext.evaluatedPolicyDomainState
+        let domainState = LAContext().evaluatedPolicyDomainState
         return domainState != oldDomainState
     }
 
@@ -49,15 +47,16 @@ public class SwiftFeatureBiometricRepositoryImpl:
         key: String, localizedReason: String,
         completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void
     ) {
+        let context = LAContext()
         let defaults = UserDefaults.standard
-        let domainState = laContext.evaluatedPolicyDomainState
-        laContext.evaluatePolicy(
+        let domainState = context.evaluatedPolicyDomainState
+        context.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: localizedReason
         ) { success, error in
             if success {
                 defaults.set(domainState, forKey: key)
-                completion(.success)
+                completion(.success(encodedDomainState: domainState?.base64EncodedString()))
             } else {
                 completion(.canceled)
             }
