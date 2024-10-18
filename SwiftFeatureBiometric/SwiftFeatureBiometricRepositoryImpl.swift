@@ -49,12 +49,12 @@ public class SwiftFeatureBiometricRepositoryImpl:
     ) {
         let context = LAContext()
         let defaults = UserDefaults.standard
-        let domainState = context.evaluatedPolicyDomainState
         context.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: localizedReason
         ) { success, error in
             if success {
+                let domainState = context.evaluatedPolicyDomainState
                 defaults.set(domainState, forKey: key)
                 completion(.success(encodedDomainState: domainState?.base64EncodedString()))
             } else {
