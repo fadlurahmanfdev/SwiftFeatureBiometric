@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SwiftFeatureBiometric"
-  spec.version      = "0.0.4"
+  spec.version      = "0.0.5"
   spec.summary      = "Swift Feature Biometric"
 
   # This description is used to generate tags and improve search results.
@@ -72,7 +72,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fadlurahmanfdev/SwiftFeatureBiometric.git", :tag => "v0.0.4" }
+  spec.source       = { :git => "https://github.com/fadlurahmanfdev/SwiftFeatureBiometric.git", :tag => "v0.0.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

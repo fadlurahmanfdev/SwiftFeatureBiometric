@@ -6,13 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		AA5D83002CC2504C0047E806 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AA5D82FF2CC2504C0047E806 /* LICENSE */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		AA4978062CC013AD006F37D2 /* SwiftFeatureBiometric.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFeatureBiometric.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA5D82FF2CC2504C0047E806 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,7 +45,6 @@
 		AA4977FC2CC013AD006F37D2 = {
 			isa = PBXGroup;
 			children = (
-				AA5D82FF2CC2504C0047E806 /* LICENSE */,
 				AA4978082CC013AD006F37D2 /* SwiftFeatureBiometric */,
 				AA4978072CC013AD006F37D2 /* Products */,
 			);
@@ -139,7 +133,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5D83002CC2504C0047E806 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

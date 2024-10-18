@@ -7,7 +7,13 @@
 
 import LocalAuthentication
 
-public class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
+public class SwiftFeatureBiometricRepositoryImpl:
+    SwiftFeatureBiometricRepository
+{
+
+    init() {
+
+    }
     let laContext: LAContext = LAContext()
 
     public func supportedBiometric() -> LABiometryType {
