@@ -15,7 +15,14 @@ class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
     }
 
     func isDeviceSupportBiometric() -> Bool {
-        return laContext.biometryType != .none
+        var supportedBiometric =
+            laContext.biometryType == .faceID
+            || laContext.biometryType == .touchID
+
+        if #available(iOS 17.0, *) {
+            supportedBiometric = laContext.biometryType == .opticID
+        }
+        return supportedBiometric
     }
 
     func canAuthenticate() -> Bool {
