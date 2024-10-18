@@ -7,14 +7,14 @@
 
 import LocalAuthentication
 
-class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
+public class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
     let laContext: LAContext = LAContext()
 
-    func supportedBiometric() -> LABiometryType {
+    public func supportedBiometric() -> LABiometryType {
         return laContext.biometryType
     }
 
-    func isDeviceSupportBiometric() -> Bool {
+    public func isDeviceSupportBiometric() -> Bool {
         var supportedBiometric =
             laContext.biometryType == .faceID
             || laContext.biometryType == .touchID
@@ -25,7 +25,7 @@ class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
         return supportedBiometric
     }
 
-    func canAuthenticate() -> Bool {
+    public func canAuthenticate() -> Bool {
         return
             laContext
             .canEvaluatePolicy(
@@ -34,14 +34,14 @@ class SwiftFeatureBiometricRepositoryImpl: SwiftFeatureBiometricRepository {
             )
     }
 
-    func isBiometricChanged(key: String) -> Bool {
+    public func isBiometricChanged(key: String) -> Bool {
         let defaults = UserDefaults.standard
         let oldDomainState = defaults.object(forKey: key) as? Data
         let domainState = laContext.evaluatedPolicyDomainState
         return domainState != oldDomainState
     }
 
-    func authenticate(
+    public func authenticate(
         key: String, localizedReason: String,
         completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void
     ) {

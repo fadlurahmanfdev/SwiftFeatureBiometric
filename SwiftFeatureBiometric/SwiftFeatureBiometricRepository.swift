@@ -7,7 +7,7 @@
 
 import LocalAuthentication
 
-protocol SwiftFeatureBiometricRepository {
+public protocol SwiftFeatureBiometricRepository {
     func supportedBiometric() -> LABiometryType
     func isDeviceSupportBiometric() -> Bool
     func canAuthenticate() -> Bool
