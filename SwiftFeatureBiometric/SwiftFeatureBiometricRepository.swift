@@ -11,6 +11,6 @@ protocol SwiftFeatureBiometricRepository {
     func supportedBiometric() -> LABiometryType
     func isDeviceSupportBiometric() -> Bool
     func canAuthenticate() -> Bool
-    func isBiometricChanged(key:String)->Bool
+    func isBiometricChanged(key:String) -> Bool
     func authenticate(key:String, localizedReason:String, completion: @escaping(FeatureBiometricAuthenticationStatus) -> Void)
 }
