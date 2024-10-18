@@ -11,9 +11,7 @@ public class SwiftFeatureBiometricRepositoryImpl:
     SwiftFeatureBiometricRepository
 {
 
-    init() {
-
-    }
+    public init() {}
     let laContext: LAContext = LAContext()
 
     public func supportedBiometric() -> LABiometryType {
