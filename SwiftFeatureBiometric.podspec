@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SwiftFeatureBiometric"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "Swift Feature Biometric"
 
   # This description is used to generate tags and improve search results.
@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
 
 
   # spec.license      = "MIT"
-  spec.license      = { :type => "MIT", :file => "MIT" }
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -46,7 +46,7 @@ Pod::Spec.new do |spec|
 
   spec.author             = { "fadlurahmanfdev" => "taufikfadlurahmanfajari.dev@gmail.com" }
   # Or just: spec.author    = "fadlurahmanfdev"
-  # spec.authors            = { "fadlurahmanfdev" => "taufikfadlurahmanfajari.dev@gmail.com" }
+  spec.authors            = { "fadlurahmanfdev" => "taufikfadlurahmanfajari.dev@gmail.com" }
   # spec.social_media_url   = "https://twitter.com/fadlurahmanfdev"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -72,7 +72,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fadlurahmanfdev/SwiftFeatureBiometric.git", :tag => "v0.0.2" }
+  spec.source       = { :git => "https://github.com/fadlurahmanfdev/SwiftFeatureBiometric.git", :tag => "v0.0.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -126,5 +126,7 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
+  
+  spec.swift_versions = ['5.0']
 
 end
