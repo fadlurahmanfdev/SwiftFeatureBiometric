@@ -42,8 +42,23 @@ public class SwiftFeatureBiometricRepositoryImpl:
         let domainState = LAContext().evaluatedPolicyDomainState
         return domainState != oldDomainState
     }
+    
+    public func authenticate(policy: LAPolicy, localizedReason: String, completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void) {
+        let context = LAContext()
+        context.evaluatePolicy(
+            policy,
+            localizedReason: localizedReason
+        ) { success, error in
+            if success {
+                completion(.success(encodedDomainState: nil))
+            } else {
+                completion(.canceled)
+            }
 
-    public func authenticate(
+        }
+    }
+
+    public func secureAuthenticate(
         key: String,
         policy: LAPolicy,
         localizedReason: String,

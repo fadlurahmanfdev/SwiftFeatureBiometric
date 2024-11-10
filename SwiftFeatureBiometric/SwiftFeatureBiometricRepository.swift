@@ -13,6 +13,13 @@ public protocol SwiftFeatureBiometricRepository {
     func canAuthenticate(policy: LAPolicy) -> Bool
     func isBiometricChanged(key: String) -> Bool
     func authenticate(
+        policy: LAPolicy,
+        localizedReason: String,
+        completion: @escaping (
+            FeatureBiometricAuthenticationStatus
+        ) -> Void
+    )
+    func secureAuthenticate(
         key: String,
         policy: LAPolicy,
         localizedReason: String,
