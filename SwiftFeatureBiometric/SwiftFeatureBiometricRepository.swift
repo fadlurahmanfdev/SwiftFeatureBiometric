@@ -11,7 +11,7 @@ public protocol SwiftFeatureBiometricRepository {
     func supportedBiometric() -> LABiometryType
     func isDeviceSupportBiometric() -> Bool
     func canAuthenticate(policy: LAPolicy) -> Bool
-    func isBiometricChanged(key: String) -> Bool
+    func isBiometricChanged(key: String, encodedDomainState: String) -> Bool
     func authenticate(
         policy: LAPolicy,
         localizedReason: String,

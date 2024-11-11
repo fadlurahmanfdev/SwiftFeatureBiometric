@@ -24,7 +24,9 @@ public class SwiftFeatureBiometricRepositoryImpl:
             || laContext.biometryType == .touchID
 
         if #available(iOS 17.0, *) {
-            supportedBiometric = laContext.biometryType == .opticID
+            if !supportedBiometric {
+                supportedBiometric = laContext.biometryType == .opticID
+            }
         }
         return supportedBiometric
     }
@@ -36,14 +38,18 @@ public class SwiftFeatureBiometricRepositoryImpl:
         )
     }
 
-    public func isBiometricChanged(key: String) -> Bool {
+    public func isBiometricChanged(key: String, encodedDomainState: String)
+        -> Bool
+    {
         let defaults = UserDefaults.standard
         let oldDomainState = defaults.object(forKey: key) as? Data
-        let domainState = LAContext().evaluatedPolicyDomainState
-        return domainState != oldDomainState
+        return encodedDomainState != oldDomainState?.base64EncodedString()
     }
-    
-    public func authenticate(policy: LAPolicy, localizedReason: String, completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void) {
+
+    public func authenticate(
+        policy: LAPolicy, localizedReason: String,
+        completion: @escaping (FeatureBiometricAuthenticationStatus) -> Void
+    ) {
         let context = LAContext()
         context.evaluatePolicy(
             policy,
